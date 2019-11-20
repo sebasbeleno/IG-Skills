@@ -8,43 +8,46 @@ class LoginPage extends StatelessWidget {
       children: <Widget>[
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[headers(), login()],
+          children: <Widget>[headers(), login(context)],
         )
       ],
     ));
   }
 
   Widget headers() {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            height: 128,
-            width: 120,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/img/imgIg.png"),
-                    fit: BoxFit.cover)),
-          ),
-          Text(
-            "SKILLS",
-            style: TextStyle(
-                fontSize: 43,
-                fontWeight: FontWeight.bold,
-                fontFamily: "Roboto"),
-          )
-        ],
+    return Center(
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              height: 128,
+              width: 120,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/img/imgIg.png"),
+                      fit: BoxFit.cover)),
+            ),
+            Text(
+              "SKILLS",
+              style: TextStyle(
+                  fontSize: 43,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Roboto"),
+            )
+          ],
+        ),
       ),
     );
   }
 
-  Widget login() {
+  Widget login(BuildContext context) {
     return Stack(
       children: <Widget>[
         Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           margin: EdgeInsets.only(top: 100),
-          height: 350,
           decoration: BoxDecoration(
             boxShadow: <BoxShadow>[
               BoxShadow(
