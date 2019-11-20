@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ig_skills/src/pages/login_page.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -11,7 +10,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: Scaffold(
+        appBar: AppBar(),
+        body: Center(
+          child: Text("Hello World"),
+        ),
+      ),
     );
   }
 }
