@@ -8,6 +8,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPage extends State<LoginPage> {
   String email;
   String password;
+  double pantalla;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
@@ -36,6 +37,7 @@ class _LoginPage extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    pantalla = (MediaQuery.of(context).size.height);
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 245, 245, 245),
       body: ListView(
@@ -105,7 +107,7 @@ class _LoginPage extends State<LoginPage> {
         children: <Widget>[
           ClipPath(
             child: Container(
-              height: 400,
+              height: 390,
               padding: EdgeInsets.all(25),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -176,9 +178,6 @@ class _LoginPage extends State<LoginPage> {
                                 color: Colors.white, fontFamily: "Roboto"),
                           ))
                     ],
-                  ),
-                  SizedBox(
-                    height: 40,
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 10, right: 10),
