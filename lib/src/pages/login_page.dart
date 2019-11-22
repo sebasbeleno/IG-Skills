@@ -172,17 +172,25 @@ class _LoginPage extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       Container(
+                        margin: EdgeInsets.only(
+                          top: 10.0,
+                          bottom: 15.0
+                        ),
                           padding: EdgeInsets.only(right: 20.0),
                           child: Text(
                             "Forgot Password",
                             style: TextStyle(
-                                color: Colors.white, fontFamily: "Roboto"),
+                                fontSize: 20.0,
+                                color: Colors.white,
+                                fontFamily: "Roboto"),
                           ))
                     ],
                   ),
                   Container(
+                    height: 50.0,
                     margin: EdgeInsets.only(left: 10, right: 10),
                     child: RaisedButton(
+                      
                       color: Color.fromARGB(255, 255, 255, 255),
                       onPressed: _validateInputs,
                       shape: RoundedRectangleBorder(
