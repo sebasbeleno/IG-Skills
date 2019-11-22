@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:ig_skills/src/pages/add_skills.dart';
 
 class FloatingNavButtom extends StatelessWidget {
 
-  final floatingNavButton = Container(
+  @override
+  Widget build(BuildContext context) {
 
- 
+    Future navigateToSubPage(context) async {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => AddSkills()));
+    } 
+    // TODO: implement build
+    return  Container(
+
+
     margin: EdgeInsets.only(
       bottom: 20.0
     ),
@@ -28,14 +36,10 @@ class FloatingNavButtom extends StatelessWidget {
         size: 50,
       ),
       onPressed: () {
+        navigateToSubPage(context);
       },
       highlightElevation: 200.0,
     )
   );
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return floatingNavButton;
   }
 }
