@@ -17,6 +17,7 @@ class _LoginPage extends State<LoginPage> {
     if (_formKey.currentState.validate()) {
 //    If all data are correct then save data to out variables
       _formKey.currentState.save();
+      Navigator.pushNamed(context, "Ig");
     } else {
 //    If all data are not valid then start auto validation.
       setState(() {
@@ -107,7 +108,7 @@ class _LoginPage extends State<LoginPage> {
         children: <Widget>[
           ClipPath(
             child: Container(
-              height: 390,
+              height: 430,
               padding: EdgeInsets.all(25),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(

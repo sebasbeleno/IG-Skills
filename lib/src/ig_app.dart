@@ -23,6 +23,7 @@ class _IGApp extends State<IGApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        body: widgetsChildren[indexTab],
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingNavButtom(),
         bottomNavigationBar: Theme(
@@ -45,14 +46,17 @@ class _IGApp extends State<IGApp> {
                     style: TextStyle(color: Colors.white, fontSize: 20.0),
                   )),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.settings, color: Colors.white, size: 35.0,),
+                  icon: Icon(
+                    Icons.settings,
+                    color: Colors.white,
+                    size: 35.0,
+                  ),
                   title: Text(
                     'Settings',
                     style: TextStyle(color: Colors.white, fontSize: 20.0),
                   )),
             ],
           ),
-        ),
-        body: widgetsChildren[indexTab]);
+        ));
   }
 }
