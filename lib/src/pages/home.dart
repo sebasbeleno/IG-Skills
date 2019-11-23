@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
-
+import '../components/skills_card.dart';
 class Home extends StatelessWidget {
+
+  
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -17,26 +18,87 @@ class Home extends StatelessWidget {
               ),
             ),
             Center(
-              child: Container(
+                child: Container(
               margin: EdgeInsets.only(
                 top: MediaQuery.of(context).size.height / 4 - 120,
               ),
               width: 150.0,
               height: 150.0,
               decoration: BoxDecoration(
+                  color: Colors.black,
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: Colors.black38,
+                      //degradado
+                      blurRadius: 15.0,
+                    )
+                  ],
                   shape: BoxShape.circle,
                   image: DecorationImage(
                       fit: BoxFit.fill,
                       image: NetworkImage(
                           "https://www.nunuoropesa.com/wp-content/uploads/2018/03/profile-img-1.jpg"))),
             )),
+            Center(
+                child: Container(
+                    margin: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height / 3.3,
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "Sebastian Beleño",
+                              style:
+                                  TextStyle(fontFamily: "Roboto", fontSize: 50),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(top: 10, right: 20),
+                              child: Column(
+                                children: <Widget>[
+                                  Text("Fronend Dev", style:TextStyle(fontSize: 25)),
+                                  Text("Cargo", style: TextStyle(fontSize: 20, fontFamily: "RobotoRegular", color: Colors.black54)),
+                                ],
+                              )
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 10, right: 20),
+                              child: Column(
+                                children: <Widget>[
+                                  Text("2", style:TextStyle(fontSize: 25)),
+                                  Text("Level", style: TextStyle(fontSize: 20, fontFamily: "RobotoRegular", color: Colors.black54))
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 10, right: 20),
+                              child: Column(
+                                children: <Widget>[
+                                  Text("3", style:TextStyle(fontSize: 25)),
+                                  Text("Skills", style: TextStyle(fontSize: 20, fontFamily: "RobotoRegular", color: Colors.black54)),
+                                ],
+                              )
+                            ),
+                          ],
+                        )
+                      ],
+                    ))),
           ],
-        )
+        ),
+        SkillsCard()
       ],
     );
   }
 }
 
+//Clase que hace el dibujo de AppBar.
 class MyPainter extends CustomPainter {
   //         <-- CustomPainter class
   @override
