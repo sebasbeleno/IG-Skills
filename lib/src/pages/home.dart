@@ -87,9 +87,33 @@ class Home extends StatelessWidget {
                               )
                             ),
                           ],
-                        )
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(top: 10, right: 20),
+                              child: ListView(
+                              children: <Widget>[
+                                Container(
+                                  child: SkillsCard(),
+                                ),
+                                Container(
+                                  child: SkillsCard(),
+                                ),
+                                Container(
+                                  child: SkillsCard(),
+                                ),
+                              ],)
+                              
+                            ),
+                          ]
+
+                        ),
                       ],
-                    ))),
+                    )
+                    )
+                    ),
           ],
         ),
         SkillsCard()
