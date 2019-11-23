@@ -118,8 +118,7 @@ class _LoginPage extends State<LoginPage> {
       child: Container(
           width: 236,
           height: 50,
-          margin:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height / 2 - 25),
+          margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 2 - 25),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
             color: Color.fromARGB(255, 41, 55, 66),
