@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class Ensayo extends StatefulWidget {
   @override
-  _LoginPage createState() => _LoginPage();
+  _EnsayoState createState() => _EnsayoState();
 }
 
-class _LoginPage extends State<LoginPage> {
+class _EnsayoState extends State<Ensayo> {
   String email;
   String password;
   double pantalla;
-
-  
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
@@ -49,7 +47,6 @@ class _LoginPage extends State<LoginPage> {
                 children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 245, 245, 245),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(40),
                           topRight: Radius.circular(40)),
@@ -192,23 +189,18 @@ class _LoginPage extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Container(
-                      margin: EdgeInsets.only(
-                        top: 25.0,
-                        bottom: 20.0
-                      ),
                       padding: EdgeInsets.only(right: 20.0),
                       child: Text(
                         "Forgot Password",
                         style: TextStyle(
-                          fontSize: 15.0,  
-                          color: Colors.white, fontFamily: "Roboto"),
+                            color: Colors.white, fontFamily: "Roboto"),
                       ))
                 ],
               ),
               Container(
-                padding: EdgeInsets.only(left: 20, right: 20),
+                margin: EdgeInsets.only(left: 10, right: 10),
                 child: RaisedButton(
-                  color: Color.fromARGB(255, 245, 245, 245),
+                  color: Color.fromARGB(255, 255, 255, 255),
                   onPressed: _validateInputs,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))),
