@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/skills_card.dart';
-class Home extends StatelessWidget {
 
-  
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -60,63 +59,78 @@ class Home extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.only(top: 10, right: 20),
-                              child: Column(
-                                children: <Widget>[
-                                  Text("Fronend Dev", style:TextStyle(fontSize: 25)),
-                                  Text("Cargo", style: TextStyle(fontSize: 20, fontFamily: "RobotoRegular", color: Colors.black54)),
-                                ],
-                              )
-                            ),
+                                margin: EdgeInsets.only(top: 10, right: 20),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text("Fronend Dev",
+                                        style: TextStyle(fontSize: 25)),
+                                    Text("Cargo",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontFamily: "RobotoRegular",
+                                            color: Colors.black54)),
+                                  ],
+                                )),
                             Container(
                               margin: EdgeInsets.only(top: 10, right: 20),
                               child: Column(
                                 children: <Widget>[
-                                  Text("2", style:TextStyle(fontSize: 25)),
-                                  Text("Level", style: TextStyle(fontSize: 20, fontFamily: "RobotoRegular", color: Colors.black54))
+                                  Text("2", style: TextStyle(fontSize: 25)),
+                                  Text("Level",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontFamily: "RobotoRegular",
+                                          color: Colors.black54))
                                 ],
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(top: 10, right: 20),
-                              child: Column(
-                                children: <Widget>[
-                                  Text("3", style:TextStyle(fontSize: 25)),
-                                  Text("Skills", style: TextStyle(fontSize: 20, fontFamily: "RobotoRegular", color: Colors.black54)),
-                                ],
-                              )
-                            ),
+                                margin: EdgeInsets.only(top: 10, right: 20),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text("3", style: TextStyle(fontSize: 25)),
+                                    Text("Skills",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontFamily: "RobotoRegular",
+                                            color: Colors.black54)),
+                                  ],
+                                )),
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(top: 10, right: 20),
-                              child: ListView(
-                              children: <Widget>[
-                                Container(
-                                  child: SkillsCard(),
-                                ),
-                                Container(
-                                  child: SkillsCard(),
-                                ),
-                                Container(
-                                  child: SkillsCard(),
-                                ),
-                              ],)
-                              
-                            ),
-                          ]
-
-                        ),
                       ],
-                    )
-                    )
-                    ),
+                    ))),
           ],
         ),
-        SkillsCard()
+        Center(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            
+            height: MediaQuery.of(context).size.height / 3 + 82.8,
+            child: ListView(
+              physics: ScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  child: SkillsCard(),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  child: SkillsCard(),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  child: SkillsCard(),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  child: SkillsCard(),
+                ),
+              ],
+            ),
+          ),
+        )
       ],
     );
   }
