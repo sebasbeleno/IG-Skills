@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ig_skills/src/ig_app.dart';
 
 class Home extends StatelessWidget {
   @override
