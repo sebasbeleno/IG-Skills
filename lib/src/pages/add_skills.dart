@@ -148,9 +148,8 @@ class _AddSkillState extends State<AddSkill> {
                   ),
                 ),
                 Text("Develop",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20)),
+                    style:
+                        TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                 Container(
                   height: 15,
                   decoration: BoxDecoration(
@@ -165,9 +164,7 @@ class _AddSkillState extends State<AddSkill> {
                   ),
                 ),
                 Text("Infraestructure",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20))
+                    style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)))
               ],
             ),
             Container(
@@ -183,7 +180,7 @@ class _AddSkillState extends State<AddSkill> {
                     hintStyle: TextStyle(
                         color: Color.fromARGB(200, 255, 255, 255),
                         fontFamily: "Roboto",
-                        fontSize: 15),
+                        fontSize: 13),
                     border: InputBorder.none,
                   ),
                 )),
@@ -195,8 +192,7 @@ class _AddSkillState extends State<AddSkill> {
             Container(
               child: Text(
                 "Choose your level",
-                style: TextStyle(
-                    color: Color.fromARGB(255, 255, 255, 255), fontSize: 23),
+                style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
               ),
             ),
             SizedBox(
@@ -219,9 +215,8 @@ class _AddSkillState extends State<AddSkill> {
                   ),
                 ),
                 Text("Low",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20)),
+                    style:
+                        TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                 Container(
                   height: 15,
                   decoration: BoxDecoration(
@@ -236,9 +231,8 @@ class _AddSkillState extends State<AddSkill> {
                   ),
                 ),
                 Text("Middle",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20)),
+                    style:
+                        TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
                 Container(
                   height: 15,
                   decoration: BoxDecoration(
@@ -253,9 +247,8 @@ class _AddSkillState extends State<AddSkill> {
                   ),
                 ),
                 Text("High",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20)),
+                    style:
+                        TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
               ],
             ),
             SizedBox(
