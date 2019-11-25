@@ -15,6 +15,7 @@ class _AddSkillState extends State<AddSkill> {
   String technology;
   String version;
   List<Color> color;
+  Color colorTex;
 
   List<Color> color1 = [
     Color.fromARGB(255, 240, 96, 64),
@@ -33,6 +34,10 @@ class _AddSkillState extends State<AddSkill> {
     Color.fromARGB(255, 225, 255, 255),
   ];
 
+  Color colorTexMiddle = Color.fromARGB(255, 73, 73, 73);
+  Color colorTexHigh = Color.fromARGB(255, 73, 73, 73);
+  Color colorTexLow = Color.fromARGB(255, 255, 255, 255);
+
   @override
   void initState() {
     super.initState();
@@ -43,6 +48,7 @@ class _AddSkillState extends State<AddSkill> {
     technology = "Technology:";
     version = "Version:";
     color = colorIni;
+    colorTex = Colors.black;
   }
 
   setSelectedRadio1(int val) {
@@ -62,12 +68,15 @@ class _AddSkillState extends State<AddSkill> {
       if (selectedRadio2 == 1) {
         level = "Low";
         color = color1;
+        colorTex = colorTexLow;
       } else if (selectedRadio2 == 2) {
         level = "Middle";
         color = color2;
+        colorTex = colorTexMiddle;
       } else {
         level = "High";
         color = color3;
+        colorTex = colorTexHigh;
       }
     });
   }
@@ -105,7 +114,8 @@ class _AddSkillState extends State<AddSkill> {
                   card(),
                 ],
               ),
-              skillsCard(context, area, level, technology, version, color)
+              skillsCard(
+                  context, area, level, technology, version, color, colorTex)
             ],
           ),
         ],
@@ -287,8 +297,10 @@ class _AddSkillState extends State<AddSkill> {
   }
 }
 
-Widget skillsCard(
-    context, area, level, technology, version, List<Color> color) {
+Widget skillsCard(context, area, level, technology, version, List<Color> color,
+    Color colorText) {
+  DateTime data = DateTime.now();
+
   return Container(
     width: MediaQuery.of(context).size.width / 1.2,
     height: 200,
@@ -314,24 +326,22 @@ Widget skillsCard(
                 child: Text(
                   area,
                   style: TextStyle(
-                      fontFamily: "Roboto",
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 73, 73, 73)),
+                      fontFamily: "Roboto", fontSize: 20, color: colorText),
                 ))
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: Text(
-                  technology,
-                  style: TextStyle(
-                      fontFamily: "Roboto",
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 73, 73, 73)),
-                ))
+            Flexible(
+              child: Container(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Text(
+                    technology,
+                    style: TextStyle(
+                        fontFamily: "Roboto", fontSize: 20, color: colorText),
+                  )),
+            )
           ],
         ),
         Row(
@@ -342,9 +352,7 @@ Widget skillsCard(
                 child: Text(
                   level,
                   style: TextStyle(
-                      fontFamily: "Roboto",
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 73, 73, 73)),
+                      fontFamily: "Roboto", fontSize: 20, color: colorText),
                 ))
           ],
         ),
@@ -356,12 +364,22 @@ Widget skillsCard(
                 child: Text(
                   version,
                   style: TextStyle(
-                      fontFamily: "Roboto",
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 73, 73, 73)),
+                      fontFamily: "Roboto", fontSize: 20, color: colorText),
                 ))
           ],
-        )
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Container(
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: Text(
+                  "${data.year.toString()}-${data.month.toString()}",
+                  style: TextStyle(
+                      fontFamily: "Roboto", fontSize: 12, color: colorText),
+                ))
+          ],
+        ),
       ],
     ),
   );
