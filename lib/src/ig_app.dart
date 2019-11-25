@@ -1,6 +1,7 @@
 import 'components/floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
+import '../src/pages/add_skills.dart';
 import 'pages/settings.dart';
 
 class IGApp extends StatefulWidget {
@@ -12,7 +13,7 @@ class IGApp extends StatefulWidget {
 
 class _IGApp extends State<IGApp> {
   int indexTab = 0;
-  final List<Widget> widgetsChildren = [Home(), Settings()];
+  final List<Widget> widgetsChildren = [Home(), Settings(),];
 
   onTappedTab(int index) {
     setState(() {
