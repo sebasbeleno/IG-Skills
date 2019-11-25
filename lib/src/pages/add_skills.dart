@@ -8,46 +8,102 @@ class AddSkill extends StatefulWidget {
 }
 
 class _AddSkillState extends State<AddSkill> {
-  String text;
   int selectedRadio1;
   int selectedRadio2;
+  String area;
+  String level;
+  String technology;
+  String version;
+  List<Color> color;
+
+  List<Color> color1 = [
+    Color.fromARGB(255, 240, 96, 64),
+    Color.fromARGB(255, 153, 44, 33),
+  ];
+  List<Color> color2 = [
+    Color.fromARGB(255, 228, 228, 228),
+    Color.fromARGB(255, 164, 164, 164),
+  ];
+  List<Color> color3 = [
+    Color.fromARGB(255, 255, 204, 94),
+    Color.fromARGB(255, 225, 166, 18)
+  ];
+  List<Color> colorIni = [
+    Color.fromARGB(255, 255, 255, 255),
+    Color.fromARGB(255, 225, 255, 255),
+  ];
 
   @override
   void initState() {
     super.initState();
     selectedRadio2 = 0;
     selectedRadio1 = 0;
+    area = "Area:";
+    level = "Level:";
+    technology = "Technology:";
+    version = "Version:";
+    color = colorIni;
   }
 
   setSelectedRadio1(int val) {
     setState(() {
       selectedRadio1 = val;
+      if (selectedRadio1 == 1) {
+        area = "Develops";
+      } else {
+        area = "Infraestructure";
+      }
     });
   }
 
   setSelectedRadio2(int val) {
     setState(() {
       selectedRadio2 = val;
+      if (selectedRadio2 == 1) {
+        level = "Low";
+        color = color1;
+      } else if (selectedRadio2 == 2) {
+        level = "Middle";
+        color = color2;
+      } else {
+        level = "High";
+        color = color3;
+      }
+    });
+  }
+
+  changeTechnology(String val) {
+    setState(() {
+      technology = val;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: ListView(
         children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Stack(
             children: <Widget>[
-              Container(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  "Add Skills",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 40),
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: Text(
+                      "Add Skills",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 40),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 160,
+                  ),
+                  card(),
+                ],
               ),
-              card(),
+              skillsCard(context, area, level, technology, version, color)
             ],
           ),
         ],
@@ -102,8 +158,9 @@ class _AddSkillState extends State<AddSkill> {
             Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextFormField(
+                  onChanged: changeTechnology,
                   onSaved: (String val) {
-                    this.text = val;
+                    this.technology = val;
                   },
                   style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                   decoration: InputDecoration(
@@ -228,49 +285,82 @@ class _AddSkillState extends State<AddSkill> {
   }
 }
 
-class SkillsCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final _card = Stack(children: <Widget>[
-      Container(
-        width: MediaQuery.of(context).size.width / 1.2,
-        height: 200,
-        margin: EdgeInsets.only(left: 40, right: 40),
-        decoration: BoxDecoration(
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                  color: Colors.black26, offset: Offset(0, 10), blurRadius: 10)
-            ],
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color.fromARGB(255, 255, 204, 94),
-                  Color.fromARGB(255, 225, 166, 18),
-                ]),
-            borderRadius: BorderRadius.circular(20)),
-        child: Column(
+Widget skillsCard(
+    context, area, level, technology, version, List<Color> color) {
+  return Container(
+    width: MediaQuery.of(context).size.width / 1.2,
+    height: 200,
+    margin: EdgeInsets.only(left: 40, right: 40, top: 90),
+    decoration: BoxDecoration(
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: Colors.black26, offset: Offset(0, 10), blurRadius: 10)
+        ],
+        gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: color),
+        borderRadius: BorderRadius.circular(20)),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              child: Text(
-                "Hice el curso de Git y GitHub",
-                style: TextStyle(fontSize: 20),
-              ),
-              margin: EdgeInsets.only(bottom: 100),
-            ),
-            Container(
-              child: Text(
-                "Today",
-                style: TextStyle(
-                    fontFamily: "RobotoRegular", color: Colors.black38),
-              ),
-            )
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: Text(
+                  area,
+                  style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 73, 73, 73)),
+                ))
           ],
         ),
-      ),
-    ]);
-
-    return _card;
-  }
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: Text(
+                  technology,
+                  style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 73, 73, 73)),
+                ))
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: Text(
+                  level,
+                  style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 73, 73, 73)),
+                ))
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: Text(
+                  version,
+                  style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 73, 73, 73)),
+                ))
+          ],
+        )
+      ],
+    ),
+  );
 }
