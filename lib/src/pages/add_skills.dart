@@ -81,7 +81,9 @@ class _AddSkillState extends State<AddSkill> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 60, 152, 255),
+      ),
       body: ListView(
         children: <Widget>[
           Stack(
@@ -114,7 +116,7 @@ class _AddSkillState extends State<AddSkill> {
   Widget card() {
     return Card(
       margin: EdgeInsets.only(left: 20, right: 20),
-      color: Colors.blue,
+      color: Color.fromARGB(255, 60, 152, 255),
       child: Container(
         margin: EdgeInsets.only(top: 50),
         child: Column(
