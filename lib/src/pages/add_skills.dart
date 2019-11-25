@@ -369,4 +369,4 @@ Widget skillsCard(
       ],
     ),
   );
-}
+
