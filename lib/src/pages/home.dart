@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/skills_card.dart';
 
+
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ig_skills/src/pages/add_skills.dart';
 import 'package:ig_skills/src/pages/login_page.dart';
 import 'package:ig_skills/src/routes/routes.dart';
 
