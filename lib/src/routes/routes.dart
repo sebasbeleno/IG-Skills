@@ -12,6 +12,6 @@ Map<String, WidgetBuilder> getRoutes() {
     "Ig": (BuildContext context) => IGApp(),
     "Settings": (BuildContext context) => Settings(),
     "/": (BuildContext context) => SplashScreen(),
-    "AddSkills": (BuildContext context) => AddSkills()
+    "AddSkills": (BuildContext context) => AddSkill()
   };
 }
