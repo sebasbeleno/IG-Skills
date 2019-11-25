@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -10,7 +11,14 @@ class _LoginPage extends State<LoginPage> {
   String password;
   double pantalla;
 
-  
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
@@ -118,7 +126,8 @@ class _LoginPage extends State<LoginPage> {
       child: Container(
           width: 236,
           height: 50,
-          margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 2 - 25),
+          margin:
+              EdgeInsets.only(top: MediaQuery.of(context).size.height / 2 - 25),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
             color: Color.fromARGB(255, 41, 55, 66),
@@ -191,16 +200,14 @@ class _LoginPage extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Container(
-                      margin: EdgeInsets.only(
-                        top: 25.0,
-                        bottom: 20.0
-                      ),
+                      margin: EdgeInsets.only(top: 25.0, bottom: 20.0),
                       padding: EdgeInsets.only(right: 20.0),
                       child: Text(
                         "Forgot Password",
                         style: TextStyle(
-                          fontSize: 15.0,  
-                          color: Colors.white, fontFamily: "Roboto"),
+                            fontSize: 15.0,
+                            color: Colors.white,
+                            fontFamily: "Roboto"),
                       ))
                 ],
               ),
@@ -227,5 +234,14 @@ class _LoginPage extends State<LoginPage> {
         ),
       ],
     );
+  }
+
+  @override
+  dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    super.dispose();
   }
 }

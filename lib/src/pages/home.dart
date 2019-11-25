@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/skills_card.dart';
 
-
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -106,7 +105,6 @@ class Home extends StatelessWidget {
         Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            
             height: MediaQuery.of(context).size.height / 3 + 82.8,
             child: ListView(
               physics: ScrollPhysics(),
