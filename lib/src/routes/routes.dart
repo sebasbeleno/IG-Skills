@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ig_skills/src/ig_app.dart';
+import 'package:ig_skills/src/pages/add_skills.dart';
 import 'package:ig_skills/src/pages/login_page.dart';
 import 'package:ig_skills/src/pages/settings.dart';
-import 'package:ig_skills/src/pages/add_skills.dart';
 
 import '../../splash_screen.dart';
 
