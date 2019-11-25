@@ -109,7 +109,7 @@ class _AddSkillState extends State<AddSkill> {
                     ),
                   ),
                   SizedBox(
-                    height: 160,
+                    height: 110,
                   ),
                   card(),
                 ],
@@ -303,7 +303,7 @@ Widget skillsCard(context, area, level, technology, version, List<Color> color,
 
   return Container(
     width: MediaQuery.of(context).size.width / 1.2,
-    height: 200,
+    height: 150,
     margin: EdgeInsets.only(left: 40, right: 40, top: 90),
     decoration: BoxDecoration(
         boxShadow: <BoxShadow>[
