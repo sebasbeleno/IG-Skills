@@ -13,15 +13,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AddSkill(),
 
-      /*initialRoute: "/",
+      initialRoute: "/",
       routes: getRoutes(),
       //ruta generada por defecto cuando no se encuentra en nuestras rutas asignadas
       onGenerateRoute: (RouteSettings setting) {
         return MaterialPageRoute(
             builder: (BuildContext context) => LoginPage());
-      },*/
+      },
     );
   }
 }

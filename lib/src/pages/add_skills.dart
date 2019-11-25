@@ -100,7 +100,7 @@ class _AddSkillState extends State<AddSkill> {
                     ),
                   ),
                   SizedBox(
-                    height: 160,
+                    height: 180,
                   ),
                   card(),
                 ],
@@ -139,7 +139,7 @@ class _AddSkillState extends State<AddSkill> {
                 ),
                 Text("Develop",
                     style:
-                        TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                        TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                 Container(
                   height: 15,
                   decoration: BoxDecoration(
@@ -154,7 +154,7 @@ class _AddSkillState extends State<AddSkill> {
                   ),
                 ),
                 Text("Infraestructure",
-                    style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)))
+                    style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20))
               ],
             ),
             Container(
@@ -170,7 +170,7 @@ class _AddSkillState extends State<AddSkill> {
                     hintStyle: TextStyle(
                         color: Color.fromARGB(200, 255, 255, 255),
                         fontFamily: "Roboto",
-                        fontSize: 13),
+                        fontSize: 15),
                     border: InputBorder.none,
                   ),
                 )),
@@ -182,7 +182,7 @@ class _AddSkillState extends State<AddSkill> {
             Container(
               child: Text(
                 "Choose your level",
-                style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 23),
               ),
             ),
             SizedBox(
@@ -206,7 +206,7 @@ class _AddSkillState extends State<AddSkill> {
                 ),
                 Text("Low",
                     style:
-                        TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                        TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 20)),
                 Container(
                   height: 15,
                   decoration: BoxDecoration(
@@ -222,7 +222,7 @@ class _AddSkillState extends State<AddSkill> {
                 ),
                 Text("Middle",
                     style:
-                        TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                        TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
                 Container(
                   height: 15,
                   decoration: BoxDecoration(
@@ -238,7 +238,7 @@ class _AddSkillState extends State<AddSkill> {
                 ),
                 Text("High",
                     style:
-                        TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+                        TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
               ],
             ),
             SizedBox(
@@ -292,7 +292,11 @@ Widget skillsCard(
   return Container(
     width: MediaQuery.of(context).size.width / 1.2,
     height: 200,
-    margin: EdgeInsets.only(left: 40, right: 40, top: 90),
+    margin: EdgeInsets.only(
+      left: 40,
+      right: 40,
+      top: 90,
+    ),
     decoration: BoxDecoration(
         boxShadow: <BoxShadow>[
           BoxShadow(
