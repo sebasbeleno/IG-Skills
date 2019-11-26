@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ig_skills/src/components/floating_action_buttom_2.dart';
 import 'package:ig_skills/src/components/floating_action_button.dart';
 import 'package:ig_skills/src/components/navigation_bar.dart';
 
@@ -131,6 +132,8 @@ class _AddSkillState extends State<AddSkill> {
             ),
           ],
         ),
+        floatingActionButton: FloatingNavButtom2(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
             canvasColor: Colors.blue,

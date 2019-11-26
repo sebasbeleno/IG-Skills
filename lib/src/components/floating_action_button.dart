@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ig_skills/src/pages/add_skills.dart';
+import 'package:ig_skills/src/pages/home.dart';
 
 class FloatingNavButtom extends StatelessWidget {
 
+  var taped = false;
+
   Future navigateToSubPage(context) async {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => AddSkill()));
+    Navigator.pushNamed(context, "AddSkills");
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ig_skills/src/components/floating_action_button.dart';
 import 'package:ig_skills/src/components/navigation_bar.dart';
 
 class Settings extends StatefulWidget {
@@ -24,34 +25,37 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              FlatButton(
-                child: Text(
-                  "Log Out",
-                  style: TextStyle(
-                      color: Colors.white, fontFamily: "Roboto", fontSize: 17),
-                ),
-                onPressed: logOut,
-              )
-            ],
-          ),
-          backgroundColor: Color.fromARGB(255, 60, 152, 255),
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            FlatButton(
+              child: Text(
+                "Log Out",
+                style: TextStyle(
+                    color: Colors.white, fontFamily: "Roboto", fontSize: 17),
+              ),
+              onPressed: logOut,
+            )
+          ],
         ),
-        body: Center(
-          child: Text("Settings"),
+        backgroundColor: Color.fromARGB(255, 60, 152, 255),
+      ),
+      body: Center(
+        child: Text("Settings"),
+      ),
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.blue,
+          primaryColor: Colors.purple,
         ),
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: Colors.blue,
-            primaryColor: Colors.purple,
-          ),
-          child: BottomNavigationBar(
-              onTap: onTappedTab,
-              currentIndex: indexTab,
-              items: navigationBar.getBotton()),
-        ));
+        child: BottomNavigationBar(
+            onTap: onTappedTab,
+            currentIndex: indexTab,
+            items: navigationBar.getBotton()),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingNavButtom(),
+    );
   }
 }
