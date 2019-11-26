@@ -24,24 +24,74 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              FlatButton(
-                child: Text(
-                  "Log Out",
-                  style: TextStyle(
-                      color: Colors.white, fontFamily: "Roboto", fontSize: 17),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                Container(
+                  height: 80,
+                  color: Colors.blue,
                 ),
-                onPressed: logOut,
-              )
-            ],
-          ),
-          backgroundColor: Color.fromARGB(255, 60, 152, 255),
-        ),
-        body: Center(
-          child: Text("Settings"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(top: 25),
+                      child: FlatButton(
+                        child: Text(
+                          "Log Out",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "Roboto",
+                              fontSize: 20),
+                        ),
+                        onPressed: logOut,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  width: 120,
+                  height: 120,
+                  margin: EdgeInsets.only(top: 25, left: 15),
+                  decoration: BoxDecoration(
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: Colors.black38,
+                          //degradado
+                          blurRadius: 15.0,
+                        )
+                      ],
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                              "https://www.nunuoropesa.com/wp-content/uploads/2018/03/profile-img-1.jpg"))),
+                )
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 20, top: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    child: Text("Settings", style: TextStyle(fontSize: 40),),
+                  ),
+                  Container(
+                    child: Text("Report a problem", style: TextStyle(fontSize: 25, color: Colors.black45),),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
+                      child: Text("Nada por ahora uwur", style: TextStyle(fontSize: 20, color: Colors.black54, fontFamily: "RobotoRegular"),),
+                    )
+                  )
+                ],
+              ),
+            )
+          ],
         ),
         bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
