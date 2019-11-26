@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ig_skills/src/components/floating_action_button.dart';
+import 'package:ig_skills/src/components/navigation_bar.dart';
 
 class AddSkill extends StatefulWidget {
   AddSkill({Key key}) : super(key: key);
@@ -16,6 +18,18 @@ class _AddSkillState extends State<AddSkill> {
   String version;
   List<Color> color;
   Color colorTex;
+
+  int indexTab = 0;
+
+  onTappedTab(int index) {
+    setState(() {
+      if (index == 1) {
+        Navigator.pushNamed(context, "Settings");
+      } else {
+        Navigator.pushNamed(context, "Home");
+      }
+    });
+  }
 
   List<Color> color1 = [
     Color.fromARGB(255, 240, 96, 64),
@@ -90,37 +104,43 @@ class _AddSkillState extends State<AddSkill> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 60, 152, 255),
-      ),
-      body: ListView(
-        children: <Widget>[
-          Stack(
-            children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    child: Text(
-                      "Add Skills",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(fontSize: 40),
+        body: ListView(
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        "Add Skills",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 40),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 150,
-                  ),
-                  card(),
-                ],
-              ),
-              skillsCard(
-                  context, area, level, technology, version, color, colorTex)
-            ],
+                    SizedBox(
+                      height: 180,
+                    ),
+                    card(),
+                  ],
+                ),
+                skillsCard(
+                    context, area, level, technology, version, color, colorTex)
+              ],
+            ),
+          ],
+        ),
+        bottomNavigationBar: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.blue,
+            primaryColor: Colors.purple,
           ),
-        ],
-      ),
-    );
+          child: BottomNavigationBar(
+              onTap: onTappedTab,
+              currentIndex: indexTab,
+              items: navigationBar.getBotton()),
+        ));
   }
 
   Widget card() {
@@ -310,7 +330,7 @@ Widget skillsCard(context, area, level, technology, version, List<Color> color,
 
   return Container(
     width: MediaQuery.of(context).size.width / 1.2,
-    height: 180,
+    height: 190,
     margin: EdgeInsets.only(left: 40, right: 40, top: 90),
     decoration: BoxDecoration(
         boxShadow: <BoxShadow>[

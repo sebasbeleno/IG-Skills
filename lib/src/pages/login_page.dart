@@ -20,6 +20,15 @@ class _LoginPage extends State<LoginPage> {
     ]);
   }
 
+  @override
+  dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    super.dispose();
+  }
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
 
@@ -27,7 +36,7 @@ class _LoginPage extends State<LoginPage> {
     if (_formKey.currentState.validate()) {
 //    If all data are correct then save data to out variables
       _formKey.currentState.save();
-      Navigator.pushNamed(context, "Ig");
+      Navigator.pushNamed(context, "Home");
     } else {
 //    If all data are not valid then start auto validation.
       setState(() {
@@ -234,14 +243,5 @@ class _LoginPage extends State<LoginPage> {
         ),
       ],
     );
-  }
-
-  @override
-  dispose() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    super.dispose();
   }
 }
