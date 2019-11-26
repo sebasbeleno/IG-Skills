@@ -10,7 +10,11 @@ class _LoginPage extends State<LoginPage> {
   String email;
   String password;
   double pantalla;
+  double adicional = 0;
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool _autoValidate = false;
   @override
   void initState() {
     super.initState();
@@ -29,9 +33,6 @@ class _LoginPage extends State<LoginPage> {
     super.dispose();
   }
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool _autoValidate = false;
-
   _validateInputs() {
     if (_formKey.currentState.validate()) {
 //    If all data are correct then save data to out variables
@@ -40,6 +41,7 @@ class _LoginPage extends State<LoginPage> {
     } else {
 //    If all data are not valid then start auto validation.
       setState(() {
+        adicional = 50;
         _autoValidate = true;
       });
     }
@@ -52,6 +54,13 @@ class _LoginPage extends State<LoginPage> {
     if (!regex.hasMatch(value))
       return 'Enter Valid Email';
     else
+      return null;
+  }
+
+  String _validatePassword(String value) {
+    if (value.isEmpty) {
+      return 'Enter Valid Password';
+    } else
       return null;
   }
 
@@ -71,7 +80,7 @@ class _LoginPage extends State<LoginPage> {
                           topLeft: Radius.circular(40),
                           topRight: Radius.circular(40)),
                     ),
-                    height: MediaQuery.of(context).size.height / 2,
+                    height: MediaQuery.of(context).size.height / 2 - adicional,
                     child: Center(child: _logo()),
                   ),
                   Container(
@@ -87,7 +96,9 @@ class _LoginPage extends State<LoginPage> {
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30))),
-                    height: MediaQuery.of(context).size.height / 2,
+                    height: (MediaQuery.of(context).size.height / 2) +
+                        adicional -
+                        25,
                     child: Form(
                       key: _formKey,
                       autovalidate: _autoValidate,
@@ -135,8 +146,8 @@ class _LoginPage extends State<LoginPage> {
       child: Container(
           width: 236,
           height: 50,
-          margin:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height / 2 - 25),
+          margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height / 2 - 25 - adicional),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(30)),
             color: Color.fromARGB(255, 41, 55, 66),
@@ -161,33 +172,36 @@ class _LoginPage extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    validator: _validateEmail,
-                    onSaved: (String val) {
-                      this.email = val;
-                    },
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                        hintText: "Email address",
-                        hintStyle: TextStyle(color: Colors.white),
-                        border: InputBorder.none,
-                        icon: Icon(
-                          Icons.mail_outline,
-                          color: Colors.white,
-                        )),
-                  )),
+              Center(
+                child: Container(
+                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      validator: _validateEmail,
+                      onSaved: (String val) {
+                        this.email = val;
+                      },
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                          hintText: "Email address",
+                          hintStyle: TextStyle(color: Colors.white),
+                          border: InputBorder.none,
+                          icon: Icon(
+                            Icons.mail_outline,
+                            color: Colors.white,
+                          )),
+                    )),
+              ),
               Container(
                 child: Divider(color: Colors.white, thickness: 1),
-                padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
               ),
               Container(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     obscureText: true,
+                    validator: _validatePassword,
                     onSaved: (String val) {
                       this.password = val;
                     },
@@ -203,14 +217,13 @@ class _LoginPage extends State<LoginPage> {
                   )),
               Container(
                 child: Divider(color: Colors.white, thickness: 1),
-                padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Container(
-                      margin: EdgeInsets.only(top: 25.0, bottom: 20.0),
-                      padding: EdgeInsets.only(right: 20.0),
+                      padding: EdgeInsets.only(top: 10, bottom: 10, right: 20),
                       child: Text(
                         "Forgot Password",
                         style: TextStyle(
@@ -221,7 +234,7 @@ class _LoginPage extends State<LoginPage> {
                 ],
               ),
               Container(
-                padding: EdgeInsets.only(left: 20, right: 20),
+                padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
                 child: RaisedButton(
                   color: Color.fromARGB(255, 245, 245, 245),
                   onPressed: _validateInputs,
@@ -237,7 +250,7 @@ class _LoginPage extends State<LoginPage> {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
