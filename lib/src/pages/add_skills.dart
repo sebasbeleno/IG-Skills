@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ig_skills/src/components/floating_action_button.dart';
 import 'package:ig_skills/src/components/navigation_bar.dart';
 
 class AddSkill extends StatefulWidget {
@@ -103,9 +104,6 @@ class _AddSkillState extends State<AddSkill> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 60, 152, 255),
-        ),
         body: ListView(
           children: <Widget>[
             Stack(
@@ -122,7 +120,7 @@ class _AddSkillState extends State<AddSkill> {
                       ),
                     ),
                     SizedBox(
-                      height: 110,
+                      height: 180,
                     ),
                     card(),
                   ],
@@ -325,7 +323,7 @@ Widget skillsCard(context, area, level, technology, version, List<Color> color,
 
   return Container(
     width: MediaQuery.of(context).size.width / 1.2,
-    height: 150,
+    height: 190,
     margin: EdgeInsets.only(left: 40, right: 40, top: 90),
     decoration: BoxDecoration(
         boxShadow: <BoxShadow>[
