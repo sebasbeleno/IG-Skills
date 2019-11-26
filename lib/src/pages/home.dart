@@ -57,8 +57,8 @@ Widget profile(BuildContext context) {
             margin: EdgeInsets.only(
               top: MediaQuery.of(context).size.height / 4 - 120,
             ),
-            width: 150.0,
-            height: 150.0,
+            width: 130.0,
+            height: 130.0,
             decoration: BoxDecoration(
                 color: Colors.black,
                 boxShadow: <BoxShadow>[
@@ -77,17 +77,20 @@ Widget profile(BuildContext context) {
           Center(
               child: Container(
                   margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height / 3.3,
+                    top: MediaQuery.of(context).size.height / 3.6,
                   ),
                   child: Column(
                     children: <Widget>[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(
-                            "Sebastian Beleño",
-                            style:
-                                TextStyle(fontFamily: "Roboto", fontSize: 50),
+                          Flexible(
+                            child: Text(
+                              "Sebastian Beleño",
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(fontFamily: "Roboto", fontSize: 40),
+                            ),
                           ),
                         ],
                       ),
@@ -138,31 +141,33 @@ Widget profile(BuildContext context) {
                   ))),
         ],
       ),
-      Center(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 3 + 82.8,
-          child: ListView(
-            physics: ScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(bottom: 20.0),
-                child: SkillsCard(),
-              ),
-              Container(
-                padding: EdgeInsets.only(bottom: 20.0),
-                child: SkillsCard(),
-              ),
-              Container(
-                padding: EdgeInsets.only(bottom: 20.0),
-                child: SkillsCard(),
-              ),
-              Container(
-                padding: EdgeInsets.only(bottom: 20.0),
-                child: SkillsCard(),
-              ),
-            ],
+      Expanded(
+        child: Center(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 3 + 82.8,
+            child: ListView(
+              physics: ScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  child: SkillsCard(),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  child: SkillsCard(),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  child: SkillsCard(),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  child: SkillsCard(),
+                ),
+              ],
+            ),
           ),
         ),
       )

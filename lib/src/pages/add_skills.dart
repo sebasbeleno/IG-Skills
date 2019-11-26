@@ -120,7 +120,7 @@ class _AddSkillState extends State<AddSkill> {
                       ),
                     ),
                     SizedBox(
-                      height: 180,
+                      height: 170,
                     ),
                     card(),
                   ],
@@ -170,7 +170,7 @@ class _AddSkillState extends State<AddSkill> {
                 Text("Develop",
                     style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20)),
+                        fontSize: 15)),
                 Container(
                   height: 15,
                   decoration: BoxDecoration(
@@ -187,7 +187,7 @@ class _AddSkillState extends State<AddSkill> {
                 Text("Infraestructure",
                     style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20))
+                        fontSize: 15))
               ],
             ),
             Container(
@@ -241,7 +241,7 @@ class _AddSkillState extends State<AddSkill> {
                 Text("Low",
                     style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20)),
+                        fontSize: 15)),
                 Container(
                   height: 15,
                   decoration: BoxDecoration(
@@ -258,7 +258,7 @@ class _AddSkillState extends State<AddSkill> {
                 Text("Middle",
                     style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20)),
+                        fontSize: 15)),
                 Container(
                   height: 15,
                   decoration: BoxDecoration(
@@ -275,7 +275,7 @@ class _AddSkillState extends State<AddSkill> {
                 Text("High",
                     style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 20)),
+                        fontSize: 15)),
               ],
             ),
             SizedBox(
