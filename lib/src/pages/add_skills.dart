@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ig_skills/src/components/floating_action_button.dart';
 import 'package:ig_skills/src/components/navigation_bar.dart';
 
 class AddSkill extends StatefulWidget {
