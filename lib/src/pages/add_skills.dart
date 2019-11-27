@@ -400,7 +400,7 @@ Widget skillsCard(context, area, level, technology, version, List<Color> color,
             Container(
                 padding: EdgeInsets.only(left: 20, right: 20),
                 child: Text(
-                  "${data.year.toString()}-${data.month.toString()}",
+                  "${data.year.toString()}-${data.month.toString()}-${data.day.toString()}",
                   style: TextStyle(
                       fontFamily: "Roboto", fontSize: 12, color: colorText),
                 ))

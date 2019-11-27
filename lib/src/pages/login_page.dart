@@ -37,7 +37,8 @@ class _LoginPage extends State<LoginPage> {
     if (_formKey.currentState.validate()) {
 //    If all data are correct then save data to out variables
       _formKey.currentState.save();
-      Navigator.pushNamed(context, "Home");
+
+      //Navigator.pushNamed(context, "Home");
     } else {
 //    If all data are not valid then start auto validation.
       setState(() {
@@ -176,6 +177,9 @@ class _LoginPage extends State<LoginPage> {
                 child: Container(
                     padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: TextFormField(
+                      onChanged: (val) {
+                        email = val;
+                      },
                       keyboardType: TextInputType.emailAddress,
                       validator: _validateEmail,
                       onSaved: (String val) {
@@ -199,6 +203,9 @@ class _LoginPage extends State<LoginPage> {
               Container(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: TextFormField(
+                    onChanged: (val) {
+                      password = val;
+                    },
                     keyboardType: TextInputType.text,
                     obscureText: true,
                     validator: _validatePassword,

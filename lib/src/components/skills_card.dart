@@ -10,7 +10,8 @@ class SkillsCard extends StatelessWidget {
         margin: EdgeInsets.only(left: 40, right: 40),
         decoration: BoxDecoration(
             boxShadow: <BoxShadow>[
-              BoxShadow(color: Colors.black26, offset: Offset(0, 10), blurRadius: 10)
+              BoxShadow(
+                  color: Colors.black26, offset: Offset(0, 10), blurRadius: 10)
             ],
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
