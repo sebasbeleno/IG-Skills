@@ -1,16 +1,12 @@
-# ig_skills
+### Features
 
-A new Flutter project.
+- Ingreso a los colaboradores de InterGrupo (No oficial)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+# IG Skills
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![](https://i.imgur.com/6SZeZDr.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+App desarrollada en Dart con tecnologia de flutter para la administración de habilidades de los colaboradores de InterGrupo. 
+
