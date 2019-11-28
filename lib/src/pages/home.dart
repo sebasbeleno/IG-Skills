@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:ig_skills/src/components/floating_action_button.dart';
 import 'package:ig_skills/src/components/navigation_bar.dart';
+import 'package:ig_skills/src/models/profile.dart';
+import 'package:ig_skills/src/pages/settings.dart';
 import '../components/skills_card.dart';
 
 class Home extends StatefulWidget {
-  Home({Key key}) : super(key: key);
-
+  final Profile myProfile;
+  Home({Key key, @required this.myProfile}) : super(key: key);
   @override
-  _HomeState createState() => _HomeState();
+  _HomeState createState() => new _HomeState(myProfile);
 }
 
 class _HomeState extends State<Home> {
+  Profile myProfile;
   int indexTab = 0;
+  _HomeState(this.myProfile);
+  @override
+  void initState() {
+    super.initState();
+  }
 
   onTappedTab(int index) {
     setState(() {
       if (index == 1) {
-        Navigator.pushNamed(context, "Settings");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Settings(
+                      myProfile: myProfile,
+                    )));
       }
     });
   }
@@ -24,9 +37,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: profile(context),
+        body: profile(context, myProfile),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingNavButtom(),
+        floatingActionButton: FloatingNavButtom(myProfile),
         bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
             canvasColor: Colors.blue,
@@ -40,7 +53,7 @@ class _HomeState extends State<Home> {
   }
 }
 
-Widget profile(BuildContext context) {
+Widget profile(BuildContext context, Profile myProfile) {
   return Column(
     children: <Widget>[
       Stack(
@@ -60,7 +73,7 @@ Widget profile(BuildContext context) {
             width: 130.0,
             height: 130.0,
             decoration: BoxDecoration(
-                color: Colors.black,
+                color: Colors.white,
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                     color: Colors.black38,
@@ -70,9 +83,7 @@ Widget profile(BuildContext context) {
                 ],
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: NetworkImage(
-                        "https://www.nunuoropesa.com/wp-content/uploads/2018/03/profile-img-1.jpg"))),
+                    fit: BoxFit.fill, image: NetworkImage(myProfile.urlFoto))),
           )),
           Center(
               child: Container(
@@ -86,7 +97,7 @@ Widget profile(BuildContext context) {
                         children: <Widget>[
                           Flexible(
                             child: Text(
-                              "Sebastian Beleño",
+                              myProfile.fullName,
                               textAlign: TextAlign.center,
                               style:
                                   TextStyle(fontFamily: "Roboto", fontSize: 40),
@@ -101,9 +112,9 @@ Widget profile(BuildContext context) {
                               margin: EdgeInsets.only(top: 10, right: 20),
                               child: Column(
                                 children: <Widget>[
-                                  Text("Fronend Dev",
+                                  Text(myProfile.position,
                                       style: TextStyle(fontSize: 25)),
-                                  Text("Cargo",
+                                  Text("Position Company",
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontFamily: "RobotoRegular",
@@ -114,7 +125,8 @@ Widget profile(BuildContext context) {
                             margin: EdgeInsets.only(top: 10, right: 20),
                             child: Column(
                               children: <Widget>[
-                                Text("2", style: TextStyle(fontSize: 25)),
+                                Text("${myProfile.level}",
+                                    style: TextStyle(fontSize: 25)),
                                 Text("Level",
                                     style: TextStyle(
                                         fontSize: 20,

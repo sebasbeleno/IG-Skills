@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:ig_skills/helpers/result.dart';
 import 'package:ig_skills/src/blocs/profileBloc.dart';
 import 'package:ig_skills/src/models/profile.dart';
+import 'package:ig_skills/src/pages/home.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -92,7 +93,13 @@ class _LoginPage extends State<LoginPage> {
       _formKey.currentState.save();
       Result resProfile = getProfile(email, password, profiles);
       if (resProfile.isSuccess) {
-        Navigator.pushNamed(context, "Home");
+        // Navigator.pushNamed(context, "Home");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Home(
+                      myProfile: resProfile.myResult,
+                    )));
       } else {
         _showDialog(resProfile.message, "Ouh!");
       }

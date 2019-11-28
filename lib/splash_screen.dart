@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:ig_skills/src/pages/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -25,7 +26,9 @@ class _SplashScreenState extends State<SplashScreen> {
   /// Navigate to Login page
   void navigateToLoginPage() {
     /// Push LoginPage.
-    Navigator.pushNamed(context, "LoginPage");
+    // Navigator.pushNamed(context, "LoginPage");
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
 
   @override
