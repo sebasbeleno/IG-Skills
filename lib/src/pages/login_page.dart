@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ig_skills/helpers/result.dart';
+import 'package:ig_skills/src/blocs/profileBloc.dart';
+import 'package:ig_skills/src/models/profile.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -18,6 +21,7 @@ class _LoginPage extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
+    profilebloc.getAllItems();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -33,12 +37,47 @@ class _LoginPage extends State<LoginPage> {
     super.dispose();
   }
 
-  _validateInputs() {
+  //  List<Profile> _profileList(){
+  //   FutureBuilder f = FutureBuilder(future: profilebloc.getAllItems(),
+  //   initialData: [],
+  //   builder: (BuildContext context, , AsyncSnapshot snapshot) {
+
+  //   }
+  // }
+// user defined function
+  void _showDialog(String message, String title) {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text(title),
+          content: new Text(message),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Ok"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  _validateInputs(List profiles) {
     if (_formKey.currentState.validate()) {
 //    If all data are correct then save data to out variables
       _formKey.currentState.save();
-
-      //Navigator.pushNamed(context, "Home");
+      Result resProfile = getProfile(email, password, profiles);
+      if (resProfile.isSuccess) {
+        Navigator.pushNamed(context, "Home");
+      } else {
+        _showDialog(resProfile.message, "Error");
+      }
     } else {
 //    If all data are not valid then start auto validation.
       setState(() {
@@ -68,54 +107,60 @@ class _LoginPage extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          Stack(
-            children: <Widget>[
-              Column(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 245, 245, 245),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40),
-                          topRight: Radius.circular(40)),
+        body: Container(
+      child: FutureBuilder(
+          future: profilebloc.allItems.first,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            return ListView(
+              children: <Widget>[
+                Stack(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 245, 245, 245),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(40),
+                                topRight: Radius.circular(40)),
+                          ),
+                          height: MediaQuery.of(context).size.height / 2 -
+                              adicional,
+                          child: Center(child: _logo()),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                  color: Colors.black38,
+                                  //degradado
+                                  blurRadius: 15.0,
+                                )
+                              ],
+                              color: Color.fromARGB(255, 50, 152, 255),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30))),
+                          height: (MediaQuery.of(context).size.height / 2) +
+                              adicional -
+                              25,
+                          child: Form(
+                            key: _formKey,
+                            autovalidate: _autoValidate,
+                            child: form(context, snapshot.data),
+                          ),
+                        )
+                      ],
                     ),
-                    height: MediaQuery.of(context).size.height / 2 - adicional,
-                    child: Center(child: _logo()),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        boxShadow: <BoxShadow>[
-                          BoxShadow(
-                            color: Colors.black38,
-                            //degradado
-                            blurRadius: 15.0,
-                          )
-                        ],
-                        color: Color.fromARGB(255, 50, 152, 255),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30))),
-                    height: (MediaQuery.of(context).size.height / 2) +
-                        adicional -
-                        25,
-                    child: Form(
-                      key: _formKey,
-                      autovalidate: _autoValidate,
-                      child: form(),
-                    ),
-                  )
-                ],
-              ),
-              Center(
-                child: _welcome(),
-              )
-            ],
-          ),
-        ],
-      ),
-    );
+                    Center(
+                      child: _welcome(),
+                    )
+                  ],
+                ),
+              ],
+            );
+          }),
+    ));
   }
 
   Widget _logo() {
@@ -166,7 +211,7 @@ class _LoginPage extends State<LoginPage> {
     );
   }
 
-  Widget form() {
+  Widget form(BuildContext context, List<dynamic> data) {
     return Stack(
       children: <Widget>[
         ClipPath(
@@ -244,7 +289,9 @@ class _LoginPage extends State<LoginPage> {
                 padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
                 child: RaisedButton(
                   color: Color.fromARGB(255, 245, 245, 245),
-                  onPressed: _validateInputs,
+                  onPressed: () {
+                    _validateInputs(data);
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: Center(
@@ -264,4 +311,42 @@ class _LoginPage extends State<LoginPage> {
       ],
     );
   }
+
+  Result getProfile(String email, String password, List profiles) {
+    for (Profile p in profiles) {
+      if (p.email == email) {
+        if (p.password == password) {
+          Result r = new Result();
+          r.isSuccess = true;
+          r.myResult = p;
+          return r;
+        }
+      }
+    }
+    Result r = new Result();
+    r.isSuccess = false;
+    r.message = "EMail or password incorrect";
+    return r;
+  }
+
+  // Result getProfile2(String email, String password) {
+  //   Result r = new Result();
+  //   List<Profile> profiles = null;
+  //   FutureBuilder(
+  //     future: profilebloc.allItems.first,
+  //     builder: (BuildContext context, AsyncSnapshot snapshot) {
+  //       if (snapshot.data == null) {
+  //         r.isSuccess = false;
+  //         r.message = "Error. ";
+  //       } else {
+  //         profiles = snapshot.data;
+  //         r.isSuccess = true;
+  //       }
+  //     },
+  //   );
+  //   if (!r.isSuccess) {
+  //     return r;
+  //   }
+  //   return (getProfile(email, password, profiles));
+  // }
 }
