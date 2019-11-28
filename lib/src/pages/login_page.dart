@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:ig_skills/helpers/result.dart';
 import 'package:ig_skills/src/blocs/profileBloc.dart';
 import 'package:ig_skills/src/models/profile.dart';
+import 'package:ig_skills/src/pages/home.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -37,14 +38,6 @@ class _LoginPage extends State<LoginPage> {
     super.dispose();
   }
 
-  //  List<Profile> _profileList(){
-  //   FutureBuilder f = FutureBuilder(future: profilebloc.getAllItems(),
-  //   initialData: [],
-  //   builder: (BuildContext context, , AsyncSnapshot snapshot) {
-
-  //   }
-  // }
-// user defined function
   void _showDialog(String message, String title) {
     // flutter defined function
     showDialog(
@@ -74,7 +67,13 @@ class _LoginPage extends State<LoginPage> {
       _formKey.currentState.save();
       Result resProfile = getProfile(email, password, profiles);
       if (resProfile.isSuccess) {
-        Navigator.pushNamed(context, "Home");
+        // Navigator.pushNamed(context, "Home");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Home(
+                      myProfile: resProfile.myResult,
+                    )));
       } else {
         _showDialog(resProfile.message, "Error");
       }
@@ -328,25 +327,4 @@ class _LoginPage extends State<LoginPage> {
     r.message = "EMail or password incorrect";
     return r;
   }
-
-  // Result getProfile2(String email, String password) {
-  //   Result r = new Result();
-  //   List<Profile> profiles = null;
-  //   FutureBuilder(
-  //     future: profilebloc.allItems.first,
-  //     builder: (BuildContext context, AsyncSnapshot snapshot) {
-  //       if (snapshot.data == null) {
-  //         r.isSuccess = false;
-  //         r.message = "Error. ";
-  //       } else {
-  //         profiles = snapshot.data;
-  //         r.isSuccess = true;
-  //       }
-  //     },
-  //   );
-  //   if (!r.isSuccess) {
-  //     return r;
-  //   }
-  //   return (getProfile(email, password, profiles));
-  // }
 }

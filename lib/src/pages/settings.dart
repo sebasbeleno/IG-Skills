@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:ig_skills/src/components/navigation_bar.dart';
+import 'package:ig_skills/src/models/profile.dart';
+import 'package:ig_skills/src/pages/home.dart';
+import 'package:ig_skills/src/pages/login_page.dart';
 
 class Settings extends StatefulWidget {
+  final Profile myProfile;
+  Settings({Key key, @required this.myProfile}) : super(key: key);
   @override
-  _SettingsState createState() => _SettingsState();
+  _SettingsState createState() => _SettingsState(myProfile);
 }
 
 class _SettingsState extends State<Settings> {
   int indexTab = 1;
 
+  Profile myProfile;
+  _SettingsState(this.myProfile);
+
   onTappedTab(int index) {
     setState(() {
-      if (index == 0) {
-        Navigator.pushNamed(context, "Home");
-      }
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Home(
+                    myProfile: myProfile,
+                  )));
     });
   }
 
   logOut() {
-    Navigator.pushNamed(context, "LoginPage");
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
 
   @override
@@ -66,8 +78,7 @@ class _SettingsState extends State<Settings> {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: NetworkImage(
-                              "https://www.nunuoropesa.com/wp-content/uploads/2018/03/profile-img-1.jpg"))),
+                          image: NetworkImage(myProfile.urlFoto))),
                 )
               ],
             ),
@@ -77,17 +88,29 @@ class _SettingsState extends State<Settings> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    child: Text("Settings", style: TextStyle(fontSize: 40),),
+                    child: Text(
+                      "Settings",
+                      style: TextStyle(fontSize: 40),
+                    ),
                   ),
                   Container(
-                    child: Text("Report a problem", style: TextStyle(fontSize: 25, color: Colors.black45),),
+                    child: Text(
+                      "Report a problem",
+                      style: TextStyle(fontSize: 25, color: Colors.black45),
+                    ),
                   ),
                   Center(
-                    child: Container(
-                      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 5),
-                      child: Text("Nada por ahora uwur", style: TextStyle(fontSize: 20, color: Colors.black54, fontFamily: "RobotoRegular"),),
-                    )
-                  )
+                      child: Container(
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height / 5),
+                    child: Text(
+                      "Nada por ahora uwur",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black54,
+                          fontFamily: "RobotoRegular"),
+                    ),
+                  ))
                 ],
               ),
             )

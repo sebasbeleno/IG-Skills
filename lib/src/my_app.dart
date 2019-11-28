@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ig_skills/splash_screen.dart';
 import 'package:ig_skills/src/pages/login_page.dart';
 import 'package:ig_skills/src/pages/testpage.dart';
 import 'package:ig_skills/src/routes/routes.dart';
@@ -13,13 +14,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: "/",
-      routes: getRoutes(),
-      //ruta generada por defecto cuando no se encuentra en nuestras rutas asignadas
-      onGenerateRoute: (RouteSettings setting) {
-        return MaterialPageRoute(
-            builder: (BuildContext context) => LoginPage());
-      },
+      home: SplashScreen(),
+      // initialRoute: "/",
+      // routes: getRoutes(),
+      // //ruta generada por defecto cuando no se encuentra en nuestras rutas asignadas
+      // onGenerateRoute: (RouteSettings setting) {
+      //   return MaterialPageRoute(
+      //       builder: (BuildContext context) => LoginPage());
+      // },
       // home: HomePage(),
     );
   }

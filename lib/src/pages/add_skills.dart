@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:ig_skills/src/components/navigation_bar.dart';
+import 'package:ig_skills/src/models/profile.dart';
+import 'package:ig_skills/src/pages/home.dart';
+import 'package:ig_skills/src/pages/settings.dart';
 
 class AddSkill extends StatefulWidget {
-  AddSkill({Key key}) : super(key: key);
+  final Profile myProfile;
+  AddSkill({Key key, @required this.myProfile}) : super(key: key);
 
   @override
-  _AddSkillState createState() => _AddSkillState();
+  _AddSkillState createState() => _AddSkillState(myProfile);
 }
 
 class _AddSkillState extends State<AddSkill> {
+  Profile myProfile;
+
+  _AddSkillState(this.myProfile);
   int selectedRadio1;
   int selectedRadio2;
   String area;
@@ -23,9 +30,19 @@ class _AddSkillState extends State<AddSkill> {
   onTappedTab(int index) {
     setState(() {
       if (index == 1) {
-        Navigator.pushNamed(context, "Settings");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Settings(
+                      myProfile: myProfile,
+                    )));
       } else {
-        Navigator.pushNamed(context, "Home");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Home(
+                      myProfile: myProfile,
+                    )));
       }
     });
   }
