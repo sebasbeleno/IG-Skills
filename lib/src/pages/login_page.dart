@@ -37,27 +37,45 @@ class _LoginPage extends State<LoginPage> {
     super.dispose();
   }
 
-  //  List<Profile> _profileList(){
-  //   FutureBuilder f = FutureBuilder(future: profilebloc.getAllItems(),
-  //   initialData: [],
-  //   builder: (BuildContext context, , AsyncSnapshot snapshot) {
-
-  //   }
-  // }
-// user defined function
   void _showDialog(String message, String title) {
-    // flutter defined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        // return object of type Dialog
         return AlertDialog(
-          title: new Text(title),
-          content: new Text(message),
+          backgroundColor: Color.fromARGB(230, 245, 245, 245),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                title,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Roboto",
+                    color: Color.fromARGB(255, 41, 55, 66)),
+              ),
+            ],
+          ),
+          titlePadding: EdgeInsets.all(10),
+          contentPadding: EdgeInsets.all(10),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                message,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Roboto",
+                    color: Color.fromARGB(255, 41, 55, 66)),
+              ),
+            ],
+          ),
           actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("Ok"),
+            FlatButton(
+              padding: EdgeInsets.only(right: 105),
+              child: Text(
+                "Okay",
+                style: TextStyle(fontSize: 20),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -76,7 +94,7 @@ class _LoginPage extends State<LoginPage> {
       if (resProfile.isSuccess) {
         Navigator.pushNamed(context, "Home");
       } else {
-        _showDialog(resProfile.message, "Error");
+        _showDialog(resProfile.message, "Ouh!");
       }
     } else {
 //    If all data are not valid then start auto validation.
@@ -325,28 +343,7 @@ class _LoginPage extends State<LoginPage> {
     }
     Result r = new Result();
     r.isSuccess = false;
-    r.message = "EMail or password incorrect";
+    r.message = "Email or password are incorrect!";
     return r;
   }
-
-  // Result getProfile2(String email, String password) {
-  //   Result r = new Result();
-  //   List<Profile> profiles = null;
-  //   FutureBuilder(
-  //     future: profilebloc.allItems.first,
-  //     builder: (BuildContext context, AsyncSnapshot snapshot) {
-  //       if (snapshot.data == null) {
-  //         r.isSuccess = false;
-  //         r.message = "Error. ";
-  //       } else {
-  //         profiles = snapshot.data;
-  //         r.isSuccess = true;
-  //       }
-  //     },
-  //   );
-  //   if (!r.isSuccess) {
-  //     return r;
-  //   }
-  //   return (getProfile(email, password, profiles));
-  // }
 }

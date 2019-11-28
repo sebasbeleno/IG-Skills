@@ -150,22 +150,10 @@ Widget profile(BuildContext context) {
               physics: ScrollPhysics(),
               scrollDirection: Axis.vertical,
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(bottom: 20.0),
-                  child: SkillsCard(),
-                ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 20.0),
-                  child: SkillsCard(),
-                ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 20.0),
-                  child: SkillsCard(),
-                ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 20.0),
-                  child: SkillsCard(),
-                ),
+                SkillsCard(),
+                SkillsCard(),
+                SkillsCard(),
+                SkillsCard()
               ],
             ),
           ),
