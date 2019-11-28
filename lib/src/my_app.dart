@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ig_skills/splash_screen.dart';
 import 'package:ig_skills/src/pages/login_page.dart';
 import 'package:ig_skills/src/pages/testpage.dart';
-import 'package:ig_skills/src/routes/routes.dart';
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
