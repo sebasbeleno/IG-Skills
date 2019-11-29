@@ -17,16 +17,12 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    /// Initialize data
     initData().then((value) {
       navigateToLoginPage();
     });
   }
 
-  /// Navigate to Login page
   void navigateToLoginPage() {
-    /// Push LoginPage.
-    // Navigator.pushNamed(context, "LoginPage");
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => LoginPage()));
   }

@@ -158,7 +158,6 @@ class _LoginPage extends State<LoginPage> {
                               boxShadow: <BoxShadow>[
                                 BoxShadow(
                                   color: Colors.black38,
-                                  //degradado
                                   blurRadius: 15.0,
                                 )
                               ],
@@ -350,7 +349,11 @@ class _LoginPage extends State<LoginPage> {
     }
     Result r = new Result();
     r.isSuccess = false;
+<<<<<<< HEAD
     r.message = "Email or password are incorrect!";
+=======
+    r.message = "Email or password are incorrect";
+>>>>>>> master
     return r;
   }
 }
