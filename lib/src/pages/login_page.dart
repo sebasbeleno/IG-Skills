@@ -39,16 +39,13 @@ class _LoginPage extends State<LoginPage> {
   }
 
   void _showDialog(String message, String title) {
-    // flutter defined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        // return object of type Dialog
         return AlertDialog(
           title: new Text(title),
           content: new Text(message),
           actions: <Widget>[
-            // usually buttons at the bottom of the dialog
             new FlatButton(
               child: new Text("Ok"),
               onPressed: () {
@@ -63,11 +60,9 @@ class _LoginPage extends State<LoginPage> {
 
   _validateInputs(List profiles) {
     if (_formKey.currentState.validate()) {
-//    If all data are correct then save data to out variables
       _formKey.currentState.save();
       Result resProfile = getProfile(email, password, profiles);
       if (resProfile.isSuccess) {
-        // Navigator.pushNamed(context, "Home");
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -78,7 +73,6 @@ class _LoginPage extends State<LoginPage> {
         _showDialog(resProfile.message, "Error");
       }
     } else {
-//    If all data are not valid then start auto validation.
       setState(() {
         adicional = 50;
         _autoValidate = true;

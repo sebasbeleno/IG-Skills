@@ -1,8 +1,4 @@
 class Profile {
-// Login:
-// entrada: correo, contraseña
-// salida: {token,nombrecompleto,cargo,urlForo}
-
   String _email;
   String _password;
   String _fullName;
