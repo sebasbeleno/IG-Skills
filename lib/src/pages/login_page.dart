@@ -71,17 +71,8 @@ class _LoginPage extends State<LoginPage> {
             ],
           ),
           actions: <Widget>[
-<<<<<<< HEAD
-            FlatButton(
-              padding: EdgeInsets.only(right: 105),
-              child: Text(
-                "Okay",
-                style: TextStyle(fontSize: 20),
-              ),
-=======
             new FlatButton(
               child: new Text("Ok"),
->>>>>>> master
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -351,11 +342,7 @@ class _LoginPage extends State<LoginPage> {
     }
     Result r = new Result();
     r.isSuccess = false;
-<<<<<<< HEAD
-    r.message = "Email or password are incorrect!";
-=======
     r.message = "Email or password are incorrect";
->>>>>>> master
     return r;
   }
 }

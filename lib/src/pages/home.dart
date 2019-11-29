@@ -159,26 +159,7 @@ Widget profile(BuildContext context, Profile myProfile) {
         ],
       ),
       Expanded(
-<<<<<<< HEAD
-        child: Center(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 3 + 82.8,
-            child: ListView(
-              physics: ScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              children: <Widget>[
-                SkillsCard(),
-                SkillsCard(),
-                SkillsCard(),
-                SkillsCard()
-              ],
-            ),
-          ),
-        ),
-=======
         child: Container(child: skillsCard()),
->>>>>>> master
       )
     ],
   );
