@@ -14,11 +14,6 @@ class ProfileBloc {
     _itemsFetcher.sink.add(items);
   }
 
-  // List<Profile> getAllItemsList() {
-  //   List<Profile> items = _repository.getAllItems();
-  //   return items;
-  // }
-
   dispose() {
     _itemsFetcher.close();
   }
