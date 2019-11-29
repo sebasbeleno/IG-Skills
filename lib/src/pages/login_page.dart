@@ -43,14 +43,24 @@ class _LoginPage extends State<LoginPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text(title),
-          content: new Text(message),
+          backgroundColor: Color.fromARGB(230, 255, 255, 255),
+          title: Center(child: Text(title)),
+          content: Text(
+            message,
+            style: TextStyle(fontSize: 14),
+          ),
           actions: <Widget>[
-            new FlatButton(
-              child: new Text("Ok"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+            Container(
+              margin: EdgeInsets.only(left: 100, right: 100),
+              child: FlatButton(
+                child: Text(
+                  "Okay",
+                  style: TextStyle(fontSize: 17),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
             ),
           ],
         );
@@ -70,7 +80,7 @@ class _LoginPage extends State<LoginPage> {
                       myProfile: resProfile.myResult,
                     )));
       } else {
-        _showDialog(resProfile.message, "Error");
+        _showDialog(resProfile.message, "Ouh!");
       }
     } else {
       setState(() {
@@ -317,7 +327,7 @@ class _LoginPage extends State<LoginPage> {
     }
     Result r = new Result();
     r.isSuccess = false;
-    r.message = "Email or password are incorrect";
+    r.message = "Email or password are incorrect!";
     return r;
   }
 }
