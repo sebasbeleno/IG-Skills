@@ -71,12 +71,17 @@ class _LoginPage extends State<LoginPage> {
             ],
           ),
           actions: <Widget>[
+<<<<<<< HEAD
             FlatButton(
               padding: EdgeInsets.only(right: 105),
               child: Text(
                 "Okay",
                 style: TextStyle(fontSize: 20),
               ),
+=======
+            new FlatButton(
+              child: new Text("Ok"),
+>>>>>>> master
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -89,11 +94,9 @@ class _LoginPage extends State<LoginPage> {
 
   _validateInputs(List profiles) {
     if (_formKey.currentState.validate()) {
-//    If all data are correct then save data to out variables
       _formKey.currentState.save();
       Result resProfile = getProfile(email, password, profiles);
       if (resProfile.isSuccess) {
-        // Navigator.pushNamed(context, "Home");
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -104,7 +107,6 @@ class _LoginPage extends State<LoginPage> {
         _showDialog(resProfile.message, "Ouh!");
       }
     } else {
-//    If all data are not valid then start auto validation.
       setState(() {
         adicional = 50;
         _autoValidate = true;
