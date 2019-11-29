@@ -226,6 +226,7 @@ List<Widget> lista(BuildContext context, List<dynamic> data) {
   Color colortext;
   String text;
 
+  print("El valor de la data que reviso ${data.length}");
   data.forEach((opts) {
     switch (opts.nivel) {
       case 1:

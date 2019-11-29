@@ -16,6 +16,21 @@ class SkillBloc {
     _itemsFetcher.sink.add(items);
   }
 
+
+  sendSkill(area, level, technology, version) async {
+    List<Skill> items = await _repository.getAllSkills();
+
+
+    print(items[0].area);
+
+    
+    items.add(Skill.fromParams(2, "Sebas", area, version, 2, "187117201"));
+
+    print(items.length);
+
+    
+  }
+
   dispose() {
     _itemsFetcher.close();
   }

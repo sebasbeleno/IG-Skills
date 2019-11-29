@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ig_skills/src/blocs/skillBloc.dart';
 import 'package:ig_skills/src/components/navigation_bar.dart';
 import 'package:ig_skills/src/models/profile.dart';
 import 'package:ig_skills/src/pages/home.dart';
 import 'package:ig_skills/src/pages/settings.dart';
+import 'package:ig_skills/src/blocs/profileskillsBloc.dart';
 
 class AddSkill extends StatefulWidget {
   final Profile myProfile;
@@ -26,6 +28,7 @@ class _AddSkillState extends State<AddSkill> {
   Color colorTex;
 
   int indexTab = 0;
+
 
   onTappedTab(int index) {
     setState(() {
@@ -79,6 +82,17 @@ class _AddSkillState extends State<AddSkill> {
     version = "Version:";
     color = colorIni;
     colorTex = Colors.black;
+
+  }
+
+  sendData(){
+    skillBloc.sendSkill(area, level, technology, version);
+     Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Home(
+                      myProfile: myProfile,
+                    )));
   }
 
   setSelectedRadio1(int val) {
@@ -319,7 +333,7 @@ class _AddSkillState extends State<AddSkill> {
               padding: EdgeInsets.only(left: 20, right: 20, bottom: 30),
               child: RaisedButton(
                 color: Color.fromARGB(255, 41, 55, 66),
-                onPressed: () {},
+                onPressed: () {sendData();},
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Center(
