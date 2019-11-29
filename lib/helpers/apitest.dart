@@ -23,6 +23,6 @@ class ApiTest implements IApiBehavior<Profile> {
         "https://i-love-png.com/images/profile_png_1113533.png",
         3));
 
-    return await Future.delayed(Duration(seconds: 4), () => itemsOut);
+    return await Future.delayed(Duration(seconds: 1), () => itemsOut);
   }
 }
