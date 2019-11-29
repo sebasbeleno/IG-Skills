@@ -231,7 +231,7 @@ List<Widget> lista(BuildContext context, List<dynamic> data) {
       case 1:
         color = color3;
         colortext = colorTexHigh;
-        text = "Low";
+        text = "Hight";
         break;
       case 2:
         color = color2;
@@ -241,7 +241,7 @@ List<Widget> lista(BuildContext context, List<dynamic> data) {
       case 3:
         color = color1;
         colortext = colorTexLow;
-        text = "Hight";
+        text = "low";
         break;
     }
 
